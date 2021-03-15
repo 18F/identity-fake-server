@@ -15,4 +15,5 @@ end
 group :development, :test do
   gem 'proofer', github: '18F/identity-proofer-gem', ref: 'v2.8.0'
   gem 'aamva', github: '18F/identity-aamva-api-client-gem', tag: 'v4.0.0'
+  gem 'lexisnexis', github: '18F/identity-lexisnexis-api-client-gem', tag: 'v3.1.0'
 end

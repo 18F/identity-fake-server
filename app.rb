@@ -24,5 +24,15 @@ module LoginGov
     post '/dldv/2.1/online' do
       fixture 'aamva/verification_response.xml'
     end
+
+    # LexisNexis
+    post "/restws/identity/v2/:account_number/:workflow_name/conversation" do
+      case params[:workflow_name]
+      when /instant.verify/
+        fixture 'lexisnexis/instant_verify_response.json'
+      when /phonefinder/
+        fixture 'lexisnexis/phone_finder_response.json'
+      end
+    end
   end
 end
