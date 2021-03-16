@@ -39,6 +39,8 @@ LEXISNEXIS_PHONE_FINDER_DELAY=5
 Replace `$base_url` with the protocol, host, port (if needed):
 
 ```yaml
+proofer_mock_fallback: "false"
+
 aamva_auth_request_timeout: "50"
 aamva_verification_request_timeout: "50"
 aamva_auth_url: "$base_url/Authentication/Authenticate.svc"
