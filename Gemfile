@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra', '~> 2.1.0'
 gem 'nokogiri', '~> 1.11.2'
+gem 'rake', '~> 13.0.0'
 
 group :test do
   gem 'capybara'
