@@ -12,6 +12,7 @@ RSpec.describe 'LexisNexis' do
       password: 'test_password',
       instant_verify_workflow: 'customers.gsa.instant.verify.workflow',
       phone_finder_workflow: 'customers.gsa.phonefinder.workflow',
+      request_timeout: 50,
     }
   end
 

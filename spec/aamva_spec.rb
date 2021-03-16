@@ -15,6 +15,8 @@ RSpec.describe 'AAMVA' do
       cert_enabled: 'false',
       private_key: Base64.encode64(private_key.to_der),
       public_key: Base64.encode64(public_key.to_der),
+      auth_request_timeout: 50,
+      verification_request_timeout: 50,
     )
   end
 

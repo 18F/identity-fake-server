@@ -8,6 +8,7 @@ RSpec.describe 'Acuant' do
       assure_id_url: base_url,
       facial_match_url: base_url,
       passlive_url: base_url,
+      timeout: 55,
     )
   end
 
