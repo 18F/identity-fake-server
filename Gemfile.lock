@@ -96,6 +96,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rake (13.0.3)
     regexp_parser (2.1.1)
     retries (0.0.5)
     rspec (3.10.0)
@@ -144,6 +145,7 @@ DEPENDENCIES
   pry-byebug
   puma
   rack-test
+  rake (~> 13.0.0)
   rspec
   sinatra (~> 2.1.0)
 
