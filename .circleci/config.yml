@@ -59,7 +59,7 @@ jobs:
       - run:
           name: deploy to cloud.gov
           command: |
-            cf push identity-fake-servert
+            cf push identity-fake-server
 
 workflows:
   version: 2
