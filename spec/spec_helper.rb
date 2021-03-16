@@ -18,8 +18,15 @@ module UrlHelpers
     "http://#{server.host}:#{server.port}"
   end
 end
-  
+
+module FixtureHelpers
+  def fixture(name)
+    File.read(File.join(__dir__, 'fixtures', name))
+  end
+end
+
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include UrlHelpers
- end
+  config.include FixtureHelpers
+end

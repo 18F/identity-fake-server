@@ -1,11 +1,18 @@
-require 'sinatra'
 require 'nokogiri'
+require 'sinatra'
+require 'json'
+require 'securerandom'
 
 module LoginGov
   class FakeVendorServer < Sinatra::Base
     def fixture(path)
       File.read(File.join(__dir__, 'fixtures', path))
     end
+
+    set :logging, true
+    set :dump_errors, true
+    set :raise_errors, true
+    set :show_exceptions, :after_handler
 
     # AAMVA
     post '/Authentication/Authenticate.svc' do
@@ -23,6 +30,33 @@ module LoginGov
     # AAMVA
     post '/dldv/2.1/online' do
       fixture 'aamva/verification_response.xml'
+    end
+
+    # Acuant
+    post '/AssureIDService/Document/Instance' do
+      # body is a JSON atom
+      SecureRandom.hex.to_json
+    end
+
+    # Acuant
+    post '/AssureIDService/Document/:instance_id/Image' do
+      ''
+    end
+
+    # The way the Acuant Client encodes images does not play well with sinatra's parameter parsing
+    error Sinatra::BadRequest do
+      status 200
+      ''
+    end
+
+    # Acuant
+    post '/api/v1/facematch' do
+      fixture 'acuant/facial_match_response.json'
+    end
+
+    # Acuant
+    get '/AssureIDService/Document/:instance_id' do
+      fixture 'acuant/get_results_response.json'
     end
 
     # LexisNexis

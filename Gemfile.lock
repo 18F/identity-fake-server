@@ -12,6 +12,15 @@ GIT
       xmldsig
 
 GIT
+  remote: https://github.com/18F/identity-doc-auth.git
+  revision: 3b2c5997a62d7bf5f6114a55d41180f4bd1ae18e
+  tag: v0.4.1
+  specs:
+    identity-doc-auth (0.4.1)
+      activesupport
+      faraday
+
+GIT
   remote: https://github.com/18F/identity-lexisnexis-api-client-gem.git
   revision: d6e73358ab899e8740e0008aff0e03e26bd4eb56
   tag: v3.1.0
@@ -128,6 +137,7 @@ DEPENDENCIES
   aamva!
   capybara
   capybara-selenium
+  identity-doc-auth!
   lexisnexis!
   nokogiri (~> 1.11.2)
   proofer!
