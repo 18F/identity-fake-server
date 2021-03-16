@@ -1,13 +1,13 @@
-# Ruby CircleCI 2.0 configuration file
+# Ruby CircleCI 2.x configuration file
 #
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+# Check https://circleci.com/developer/images/image/cimg/ruby for more details
 #
 version: 2
 jobs:
   build:
     docker:
       # Specify the Ruby version you desire here
-      - image: circleci/ruby:2.6.5
+      - image: cimg/ruby:2.7.2
 
     steps:
       - checkout
