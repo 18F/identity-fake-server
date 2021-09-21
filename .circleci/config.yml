@@ -59,6 +59,7 @@ jobs:
       - run:
           name: deploy to cloud.gov
           command: |
+            bundle package --all
             cf push identity-fake-server
 
 workflows:
