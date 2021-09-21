@@ -11,7 +11,7 @@ commands:
           name: Install dependencies
           command: |
             gem install bundler
-            bundle check || bundle install --retry=3 --path vendor/bundle
+            bundle check || bundle install --retry=3
 
   build-release:
     steps:
@@ -59,7 +59,8 @@ jobs:
       - run:
           name: deploy to cloud.gov
           command: |
-            bundle package --all
+            bundle config set cache_all true
+            bundle package
             cf push identity-fake-server
 
 workflows:
