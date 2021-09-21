@@ -1,7 +1,14 @@
 PORT ?= 5555
+PUMA_MIN_THREADS ?= 8
+PUMA_MAX_THREADS ?= 32
+PUMA_NUM_WORKERS ?= 3
 
 run:
-	bundle exec rackup config.ru --port $(PORT)
+	PORT=$(PORT) \
+	PUMA_MIN_THREADS=$(PUMA_MIN_THREADS) \
+	PUMA_MAX_THREADS=$(PUMA_MAX_THREADS) \
+	PUMA_NUM_WORKERS=$(PUMA_NUM_WORKERS) \
+	foreman start
 
 test:
 	bundle exec rspec spec/
