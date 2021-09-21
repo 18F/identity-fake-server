@@ -11,7 +11,7 @@ commands:
           name: Install dependencies
           command: |
             gem install bundler
-            bundle check || bundle install --retry=3 --path vendor/bundle
+            bundle check || bundle install --retry=3
 
   build-release:
     steps:
