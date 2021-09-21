@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 gem 'sinatra', '~> 2.1.0'
 gem 'nokogiri', '~> 1.11.4'
 gem 'rake', '~> 13.0.0'
+gem 'puma'
 
 group :test do
   gem 'capybara'
   gem 'capybara-selenium'
   gem 'pry-byebug'
-  gem 'puma'
   gem 'rack-test'
   gem 'rspec'
 end
