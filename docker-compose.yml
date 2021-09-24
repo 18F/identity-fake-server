@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    command: bundle exec puma -p 5555 -C config/puma.rb
+    ports:
+      - "5555:5555"
