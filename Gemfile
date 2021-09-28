@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra', '~> 2.1.0'
-gem 'nokogiri', '~> 1.11.4'
+gem 'nokogiri', '~> 1.12.5'
 gem 'rake', '~> 13.0.0'
 gem 'puma'
 
