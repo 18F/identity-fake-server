@@ -1,3 +1,7 @@
-public/api/deploy.json
 .DS_Store
 .env
+public/api/deploy.json
+
+terraform/.terraform
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate*
