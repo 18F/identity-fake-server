@@ -1,13 +1,12 @@
 resource "aws_eip" "nat" {
-  address = "35.89.41.239"
-  vpc     = true
+  vpc = true
 }
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.14.2"
 
-  name = var.cluster_name
+  name = var.name
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -22,12 +21,12 @@ module "vpc" {
   reuse_nat_ips        = true
 
   public_subnet_tags = {
-    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                    = 1
+    "kubernetes.io/cluster/${var.name}" = "shared"
+    "kubernetes.io/role/elb"            = 1
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-    "kubernetes.io/role/internal-elb"           = 1
+    "kubernetes.io/cluster/${var.name}" = "shared"
+    "kubernetes.io/role/internal-elb"   = 1
   }
 }

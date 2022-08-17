@@ -24,7 +24,7 @@ output "cluster_id" {
 
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
-  value       = var.cluster_name
+  value       = var.name
 }
 
 output "cluster_platform_version" {

@@ -1,4 +1,4 @@
-variable "cluster_name" {
+variable "name" {
   default = "identity-fake-server"
 }
 
