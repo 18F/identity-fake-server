@@ -77,5 +77,25 @@ module LoginGov
         fixture 'lexisnexis/phone_finder_response.json'
       end
     end
+
+    # USPS
+    post '/ivs-ippaas-api/IPPRest/resources/rest/optInIPPApplicant' do
+      fixture 'usps/request_enroll_response.json'
+    end
+
+    # USPS
+    post '/ivs-ippaas-api/IPPRest/resources/rest/getProofingResults' do
+      fixture 'usps/request_passed_proofing_results_response.json'
+    end
+
+    # USPS
+    post '/ivs-ippaas-api/IPPRest/resources/rest/requestEnrollmentCode' do
+      fixture 'usps/request_enrollment_code_response.json'
+    end
+
+    # USPS
+    post '/oauth/authenticate' do
+      fixture 'usps/request_token_response.json'
+    end
   end
 end
