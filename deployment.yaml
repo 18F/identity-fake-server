@@ -6,7 +6,6 @@ metadata:
   labels:
     app: fake-server
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: fake-server
@@ -35,6 +34,26 @@ spec:
   selector:
     app: fake-server
 
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fake-server
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fake-server
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
+
 # ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
@@ -47,7 +66,7 @@ spec:
 #   ingressClassName: alb
 #   tls:
 #   - hosts:
-#     - fake-server.identitysandbox.gov
+#     - fake-server.loadtest.identitysandbox.gov
 #   rules:
 #     - http:
 #         paths:
