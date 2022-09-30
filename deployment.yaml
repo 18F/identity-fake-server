@@ -17,15 +17,15 @@ spec:
       containers:
       - name: fake-server
         image: logindotgov/identity-fake-server:latest
-        ports:
-        - containerPort: 5555
         resources:
           requests:
-            cpu: 250m
-            memory: 128Mi
+            cpu: "250m"
+            memory: "128Mi"
           limits:
-            cpu: 800m
-            memory: 1024Mi
+            cpu: "800m"
+            memory: "1024Mi"
+        ports:
+        - containerPort: 5555
 
 ---
 apiVersion: v1
