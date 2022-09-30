@@ -17,6 +17,25 @@ spec:
       containers:
       - name: fake-server
         image: logindotgov/identity-fake-server:latest
+        env:
+        - name: AAMVA_SECURITY_TOKEN_DELAY
+          value: "5"
+        - name: AAMVA_AUTHENTICATION_TOKEN_DELAY
+          value: "5"
+        - name: AAMVA_VERIFICATION_DELAY
+          value: "5"
+        - name: ACUANT_CREATE_DOCUMENT_DELAY
+          value: "5"
+        - name: ACUANT_UPLOAD_IMAGE_DELAY
+          value: "5"
+        - name: ACUANT_FACEMATCH_DELAY
+          value: "5"
+        - name: ACUANT_GET_RESULTS_DELAY
+          value: "5"
+        - name: LEXISNEXIS_INSTANT_VERIFY_DELAY
+          value: "5"
+        - name: LEXISNEXIS_PHONE_FINDER_DELAY
+          value: "5"
         resources:
           requests:
             cpu: "250m"
