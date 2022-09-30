@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-server
+  labels:
+    app: fake-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fake-server
+  template:
+    metadata:
+      labels:
+        app: fake-server
+    spec:
+      containers:
+      - name: fake-server
+        image: logindotgov/identity-fake-server:latest
+        ports:
+        - containerPort: 5555
+
