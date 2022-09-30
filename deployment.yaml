@@ -19,6 +19,13 @@ spec:
         image: logindotgov/identity-fake-server:latest
         ports:
         - containerPort: 5555
+        resources:
+          requests:
+            cpu: 250m
+            memory: 128Mi
+          limits:
+            cpu: 800m
+            memory: 1024Mi
 
 ---
 apiVersion: v1
@@ -53,6 +60,12 @@ spec:
       target:
         type: Utilization
         averageUtilization: 80
+  - type: Pods
+    pods:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
 
 # ---
 # apiVersion: networking.k8s.io/v1
