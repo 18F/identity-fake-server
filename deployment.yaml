@@ -52,7 +52,7 @@ spec:
     kind: Deployment
     name: fake-server
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 100
   metrics:
   - type: Resource
     resource:
@@ -68,6 +68,7 @@ metadata:
   name: fake-server
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     external-dns.alpha.kubernetes.io/hostname: fake-server.loadtest.identitysandbox.gov
 spec:
   ingressClassName: alb
