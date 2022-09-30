@@ -67,7 +67,6 @@ kind: Ingress
 metadata:
   name: fake-server
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     external-dns.alpha.kubernetes.io/hostname: fake-server.loadtest.identitysandbox.gov
 spec:
