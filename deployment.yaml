@@ -36,6 +36,8 @@ spec:
           value: "5"
         - name: LEXISNEXIS_PHONE_FINDER_DELAY
           value: "5"
+        - name: TEST
+          value: "this is a test"        
         resources:
           requests:
             cpu: "75m"
