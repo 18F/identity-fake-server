@@ -1,3 +1,17 @@
+#
+# This will create a deployment of the fake-server app
+# that will live on https://fake-server.loadtest.identitysandbox.gov.
+# The loadtest.identitysandbox.gov dns zone needs to be created
+# and delegated from identitysandbox.gov in the account this is going
+# to be created in, and an SSL cert for fake-server.loadtest.identitysandbox.gov
+# needs to be created and have it's magic auth stuff put in the loadtest
+# subdomain.  I did this by hand, but the rest happens automagically,
+# as the fake-server hostname will be created by the external-dns
+# service in the cluster, and the cert will be autodiscovered by the
+# aws-load-balancer-controller.
+# Logs should be going into cloudwatch.
+#
+
 ---
 apiVersion: apps/v1
 kind: Deployment
