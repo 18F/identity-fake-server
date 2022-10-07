@@ -33,23 +33,23 @@ spec:
         image: logindotgov/identity-fake-server:latest
         env:
         - name: AAMVA_SECURITY_TOKEN_DELAY
-          value: "5"
+          value: "0.3645"
         - name: AAMVA_AUTHENTICATION_TOKEN_DELAY
-          value: "5"
+          value: "0.3706"
         - name: AAMVA_VERIFICATION_DELAY
-          value: "5"
+          value: "3.4252"
         - name: ACUANT_CREATE_DOCUMENT_DELAY
-          value: "5"
+          value: "0.3916"
         - name: ACUANT_UPLOAD_IMAGE_DELAY
-          value: "5"
+          value: "1.5201"
         - name: ACUANT_FACEMATCH_DELAY
-          value: "5"
+          value: "4"
         - name: ACUANT_GET_RESULTS_DELAY
-          value: "5"
+          value: "8.3772"
         - name: LEXISNEXIS_INSTANT_VERIFY_DELAY
-          value: "5"
+          value: "0.9257"
         - name: LEXISNEXIS_PHONE_FINDER_DELAY
-          value: "5"
+          value: "3.3355"
         resources:
           requests:
             cpu: "75m"
