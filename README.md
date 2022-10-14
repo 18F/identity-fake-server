@@ -32,6 +32,7 @@ ACUANT_FACEMATCH_DELAY=5
 ACUANT_GET_RESULTS_DELAY=5
 LEXISNEXIS_INSTANT_VERIFY_DELAY=5
 LEXISNEXIS_PHONE_FINDER_DELAY=5
+LEXISNEXIS_TRUE_ID_DELAY=5
 ```
 
 ### Configuring the IDP
@@ -50,6 +51,19 @@ lexisnexis_base_url: "$base_url"
 lexisnexis_instant_verify_workflow: "customers.gsa.instant.verify.workflow"
 lexisnexis_phone_finder_workflow: "customers.gsa.phonefinder.workflow"
 lexisnexis_timeout: "50"
+
+# Uncomment below once TrueID is supported by the fake server
+# doc_auth_vendor_randomize_percent: 95
+# doc_auth_vendor_randomize_alternate_vendor: 'lexisnexis'
+### LexisNexis TrueID Configs
+lexisnexis_trueid_account_id: "00000"
+lexisnexis_trueid_username: testy_tester
+lexisnexis_trueid_password: test
+lexisnexis_trueid_liveness_cropping_workflow: TrueID_liveness_crop
+lexisnexis_trueid_liveness_nocropping_workflow: TrueID_liveness_no_crop
+lexisnexis_trueid_noliveness_cropping_workflow: TrueID_no_liveness_crop
+lexisnexis_trueid_noliveness_nocropping_workflow: TrueID_no_liveness_no_crop
+lexisnexis_trueid_timeout: '60'
 
 acuant_timeout: "55"
 acuant_assure_id_url: "$base_url"
