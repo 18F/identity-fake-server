@@ -66,6 +66,15 @@ module LoginGov
       fixture 'acuant/get_results_response.json'
     end
 
+    # LexisNexis TrueID
+    post '/restws/identity/v3/accounts/:account_number/workflows/:workflow_name/conversations' do
+      case params[:workflow_name]
+      when /TrueID/
+        sleep ENV['LEXISNEXIS_TRUE_ID_DELAY'].to_f
+        fixture 'lexisnexis/true_id_response.json'
+      end
+    end
+
     # LexisNexis
     post "/restws/identity/v2/:account_number/:workflow_name/conversation" do
       case params[:workflow_name]
