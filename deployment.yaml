@@ -50,6 +50,8 @@ spec:
           value: "0.9257"
         - name: LEXISNEXIS_PHONE_FINDER_DELAY
           value: "3.3355"
+        - name: LEXISNEXIS_TRUE_ID_DELAY
+          value: "15.0"
         resources:
           requests:
             cpu: "75m"
