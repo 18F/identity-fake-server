@@ -61,6 +61,11 @@ spec:
             memory: "512Mi"
         ports:
         - containerPort: 5555
+      tolerations:
+      - key: "spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
 
 ---
 apiVersion: v1
