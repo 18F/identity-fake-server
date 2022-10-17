@@ -86,5 +86,10 @@ module LoginGov
         fixture 'lexisnexis/phone_finder_response.json'
       end
     end
+
+    # health
+    get '/health' do
+      status 200
+    end
   end
 end

@@ -109,6 +109,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /health
     external-dns.alpha.kubernetes.io/hostname: fake-server.loadtest.identitysandbox.gov
 spec:
   ingressClassName: alb
