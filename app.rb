@@ -87,6 +87,24 @@ module LoginGov
       end
     end
 
+    # USPS IPPaaS auth
+    post "/oauth/authenticate" do
+      sleep ENV['USPS_IPPAAS_AUTH_DELAY'].to_f
+      fixture 'usps/ippaas_oauth_authenticate_response.json'
+    end
+
+    # USPS IPPaaS
+    post "/ivs-ippaas-api/IPPRest/resources/rest/getProofingResults" do
+      sleep ENV['USPS_IPPAAS_GETPROOFINGRESULTS_DELAY'].to_f
+      case ENV['USPS_IPPAAS_GETPROOFINGRESULTS_OUTCOME']
+      when "missing_enrollment_code"
+        status 400
+        fixture 'usps/ippaas_getproofingresults_missingenrollmentcode_response.json'
+      else
+        fixture 'usps/ippaas_getproofingresults_response.json'
+      end
+    end
+
     # health
     get '/health' do
       status 200
