@@ -24,6 +24,7 @@ RSpec.describe 'USPS IPPaaS' do
             end
 
             expect(response.status).to be(200)
+            expect(response.headers&.[]('Content-Type')).to eq('application/json')
             expect(JSON.parse(response.body)).to include(
                 "token_type" => "Bearer",
                 "access_token" => "COYR+QInVfXtM8qC+UdBlTnUFBC10AK/ ",
@@ -56,6 +57,7 @@ RSpec.describe 'USPS IPPaaS' do
             end
 
             expect(response.status).to be(200)
+            expect(response.headers&.[]('Content-Type')).to eq('application/json')
             expect(JSON.parse(response.body)).to include(
                 "status" => "In-person passed",
                 "proofingPostOffice" => "WILKES BARRE",
@@ -85,6 +87,7 @@ RSpec.describe 'USPS IPPaaS' do
             end
 
             expect(response.status).to be(400)
+            expect(response.headers&.[]('Content-Type')).to eq('application/json')
             expect(JSON.parse(response.body)).to include(
                 "responseMessage" => "Enrollment code 3438274832758323 does not exist"
             )
