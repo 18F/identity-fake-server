@@ -33,6 +33,18 @@ ACUANT_GET_RESULTS_DELAY=5
 LEXISNEXIS_INSTANT_VERIFY_DELAY=5
 LEXISNEXIS_PHONE_FINDER_DELAY=5
 LEXISNEXIS_TRUE_ID_DELAY=5
+USPS_IPPAAS_AUTH_DELAY=0
+USPS_IPPAAS_GETPROOFINGRESULTS_DELAY=0
+```
+
+The USPS IPPaaS proofing results endpoint also supports multiple response configurations.
+
+```bash
+# Defaults to success response if not set
+USPS_IPPAAS_GETPROOFINGRESULTS_OUTCOME=
+
+# Also supports 400 error for missing enrollment code
+USPS_IPPAAS_GETPROOFINGRESULTS_OUTCOME=missing_enrollment_code
 ```
 
 ### Configuring the IDP
