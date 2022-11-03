@@ -34,6 +34,34 @@ RSpec.describe 'USPS IPPaaS' do
         end
     end
 
+    describe 'optInIPPApplicant' do
+        it 'serves a successful response' do
+            response = client.post('/ivs-ippaas-api/IPPRest/resources/rest/optInIPPApplicant') do |req|
+                req.body = {
+                    "sponsorID" => 4,
+                    "uniqueID" => "AA97B177-9383-4934",
+                    "firstName" => "Susan",
+                    "lastName" => "Smith",
+                    "streetAddress" => "215 Spring Street",
+                    "city" => "Anytown",
+                    "state" => "WV",
+                    "zipCode" => "24986",
+                    "emailAddress" => "susan.smith@gmail.",
+                    "alternateEmail" => "susan.smith@yahoo.",
+                    "phoneNumber" => "7037290432",
+                    "IPPAssuranceLevel" => "1.5",
+                }.to_json
+            end
+
+            expect(response.status).to be(200)
+            expect(response.headers&.[]('Content-Type')).to eq('application/json')
+            expect(JSON.parse(response.body)).to include(
+                "enrollmentCode" => "2048702198804353",
+                "responseMessage" => "Applicant 123456789 successfully processed",
+            )
+        end
+    end
+
     describe 'getProofingResults' do
         original_outcome = nil
 
