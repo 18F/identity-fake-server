@@ -108,6 +108,13 @@ module LoginGov
       end
     end
 
+    # USPS IPPaaS
+    post "/ivs-ippaas-api/IPPRest/resources/rest/optInIPPApplicant" do
+      sleep ENV['USPS_IPPAAS_OPTINIPPAPPLICANT_DELAY'].to_f
+      content_type 'application/json'
+      fixture 'usps/ippaas_optinippapplicant_response.json'
+    end
+
     # health
     get '/health' do
       status 200
