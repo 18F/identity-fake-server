@@ -126,7 +126,13 @@ module LoginGov
 
     # health
     get '/health' do
-      http_connections.set(1)
+      begin
+        sockstatdata = File.read('/proc/net/sockstat')
+        connections = /TCP: inuse (?<inuse>\d+) /.match(sockstatdata)[:inuse].to_i
+        http_connections.set(connections)
+      rescue
+        http_connections.set(1)
+      end
       status 200
     end
   end
