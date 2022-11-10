@@ -30,7 +30,7 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/path: '/metrics'
-        prometheus.io/port: 5555
+        prometheus.io/port: '5555'
     spec:
       containers:
       - name: fake-server
