@@ -27,10 +27,14 @@ spec:
     metadata:
       labels:
         app: fake-server
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/metrics'
+        prometheus.io/port: '5555'
     spec:
       containers:
       - name: fake-server
-        image: 894947205914.dkr.ecr.us-west-2.amazonaws.com/logindotgov/identity-fake-server:latest
+        image: 894947205914.dkr.ecr.us-west-2.amazonaws.com/logindotgov/identity-fake-server:1.1.0
         env:
         - name: AAMVA_SECURITY_TOKEN_DELAY
           value: "0.3645"

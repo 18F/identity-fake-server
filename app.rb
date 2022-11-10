@@ -2,9 +2,18 @@ require 'nokogiri'
 require 'sinatra'
 require 'json'
 require 'securerandom'
+require 'prometheus/client'
+
 
 module LoginGov
   class FakeVendorServer < Sinatra::Base
+
+    # Prometheus init
+    prometheus = Prometheus::Client.registry
+    http_connections = Prometheus::Client::Gauge.new(:http_connections, docstring: 'current HTTP connections')
+    prometheus.register(http_connections)
+    http_connections.set(0)
+
     def fixture(path)
       File.read(File.join(__dir__, 'fixtures', path))
     end
@@ -117,6 +126,7 @@ module LoginGov
 
     # health
     get '/health' do
+      http_connections.set(1)
       status 200
     end
   end

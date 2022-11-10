@@ -4,6 +4,8 @@ gem 'sinatra', '~> 2.2.0'
 gem 'nokogiri', '~> 1.13.9'
 gem 'rake', '~> 13.0.0'
 gem 'puma'
+gem 'prometheus-client'
+gem 'rack'
 
 group :test do
   gem 'capybara'
