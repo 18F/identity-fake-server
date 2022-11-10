@@ -28,7 +28,7 @@ spec:
       labels:
         app: fake-server
       annotations:
-        prometheus.io/scrape: 'true'
+        prometheus.io/scrape: true
         prometheus.io/path: '/metrics'
         prometheus.io/port: '5555'
     spec:
