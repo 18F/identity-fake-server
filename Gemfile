@@ -5,7 +5,7 @@ gem 'nokogiri', '~> 1.13.9'
 gem 'rake', '~> 13.0.0'
 gem 'puma'
 gem 'prometheus-client'
-gem 'rack'
+gem 'rack', '>= 3.0.0'
 
 group :test do
   gem 'capybara'
