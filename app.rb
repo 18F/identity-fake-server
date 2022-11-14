@@ -8,6 +8,7 @@ if ENV['NEW_RELIC_LICENSE_KEY'] && ENV['NEW_RELIC_APP_NAME']
   puts 'enabling newrelic'
 end
 
+
 module LoginGov
   class FakeVendorServer < Sinatra::Base
 
@@ -137,6 +138,22 @@ module LoginGov
         http_connections.set(1)
       end
       status 200
+    end
+  end
+
+  class HandleBadEncodingMiddleware
+    def initialize(app)
+      @app = app
+    end
+
+    def call(env)
+      begin
+        Rack::Utils.parse_nested_query(env['QUERY_STRING'].to_s)
+      rescue Rack::Utils::InvalidParameterError
+        env['QUERY_STRING'] = ''
+      end
+
+      @app.call(env)
     end
   end
 end
