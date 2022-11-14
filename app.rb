@@ -7,10 +7,6 @@ if ENV['NEW_RELIC_LICENSE_KEY'] && ENV['NEW_RELIC_APP_NAME']
   require 'newrelic_rpm'
   puts 'enabling newrelic'
 end
-<<<<<<< HEAD
-=======
-
->>>>>>> tspencer/newrelic
 
 module LoginGov
   class FakeVendorServer < Sinatra::Base
