@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: fake-server
-        image: 894947205914.dkr.ecr.us-west-2.amazonaws.com/logindotgov/identity-fake-server:1.1.1
+        image: 894947205914.dkr.ecr.us-west-2.amazonaws.com/logindotgov/identity-fake-server:1.2.0
         env:
         - name: AAMVA_SECURITY_TOKEN_DELAY
           value: "0.3645"
@@ -58,6 +58,16 @@ spec:
           value: "15.0"
         - name: USPS_IPPAAS_GETPROOFINGRESULTS_OUTCOME
           value: "missing_enrollment_code"
+        - name: NEW_RELIC_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: newrelic-license
+              key: newrelic-license
+              optional: false
+        - name: NEW_RELIC_APP_NAME
+          value: fake-server.loadtest.identitysandbox.gov
+        - name: NEW_RELIC_HOST
+          value: gov-collector.newrelic.com
         resources:
           requests:
             cpu: "75m"

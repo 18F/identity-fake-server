@@ -6,6 +6,7 @@ gem 'rake', '~> 13.0.0'
 gem 'puma'
 gem 'prometheus-client'
 gem 'rack'
+gem 'newrelic_rpm'
 
 group :test do
   gem 'capybara'

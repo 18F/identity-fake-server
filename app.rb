@@ -3,7 +3,10 @@ require 'sinatra'
 require 'json'
 require 'securerandom'
 require 'prometheus/client'
-
+if ENV['NEW_RELIC_LICENSE_KEY'] && ENV['NEW_RELIC_APP_NAME']
+  require 'newrelic_rpm'
+  puts 'enabling newrelic'
+end
 
 module LoginGov
   class FakeVendorServer < Sinatra::Base
