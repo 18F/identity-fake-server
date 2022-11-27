@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:2.7.4
+FROM ruby:2.7.6
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get dist-upgrade -y
