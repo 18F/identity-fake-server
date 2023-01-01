@@ -1,3 +1,4 @@
 public/api/deploy.json
 .DS_Store
 .env
+.git/

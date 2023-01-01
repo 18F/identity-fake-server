@@ -83,3 +83,4 @@ acuant_assure_id_url: "$base_url"
 acuant_facial_match_url: "$base_url"
 doc_auth_vendor: 'acuant'
 ```
+test
