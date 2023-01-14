@@ -115,7 +115,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 7
+          averageUtilization: 5
   # - type: Pods
   #   pods:
   #     metric:
