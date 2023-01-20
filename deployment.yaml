@@ -108,7 +108,7 @@ spec:
     kind: Deployment
     name: fake-server
   minReplicas: 1
-  maxReplicas: 6144
+  maxReplicas: 2048
   metrics:
     - type: Resource
       resource:
