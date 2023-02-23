@@ -68,6 +68,8 @@ spec:
               value: fake-server.loadtest.identitysandbox.gov
             - name: NEW_RELIC_HOST
               value: gov-collector.newrelic.com
+            - name: RACK_TIMEOUT_SERVICE_TIMEOUT
+              value: "120000"
           resources:
             requests:
               cpu: "75m"
