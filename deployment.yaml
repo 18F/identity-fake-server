@@ -55,7 +55,7 @@ spec:
             - name: LEXISNEXIS_PHONE_FINDER_DELAY
               value: "3.3355"
             - name: LEXISNEXIS_TRUE_ID_DELAY
-              value: "30.0"
+              value: "26.0"
             - name: USPS_IPPAAS_GETPROOFINGRESULTS_OUTCOME
               value: "missing_enrollment_code"
             - name: NEW_RELIC_LICENSE_KEY
