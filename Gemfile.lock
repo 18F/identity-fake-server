@@ -90,8 +90,8 @@ GEM
       uri
     newrelic_rpm (9.7.1)
     nio4r (2.7.0)
-    nokogiri (1.14.5)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.16.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     prometheus-client (4.2.2)
     pry (0.14.2)
@@ -158,7 +158,7 @@ DEPENDENCIES
   identity-doc-auth!
   lexisnexis!
   newrelic_rpm
-  nokogiri (~> 1.14.3)
+  nokogiri (~> 1.16.2)
   prometheus-client
   proofer!
   pry-byebug
