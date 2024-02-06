@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', '~> 2.2.3'
+gem 'sinatra', '~> 4.0.0'
 gem 'nokogiri', '~> 1.16'
 gem 'rake', '~> 13.0.0'
 gem 'puma'
 gem 'prometheus-client'
-gem 'rack'
+gem 'rack', '~> 3.0.0'
 gem 'newrelic_rpm'
 
 group :test do
