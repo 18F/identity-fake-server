@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:2.7.6
+FROM ruby:3.3.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get dist-upgrade -y
@@ -13,7 +13,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
 
-RUN gem install bundler:2.2.14
+RUN gem install bundler:2.5.5
 RUN bundle install
 
 EXPOSE 5555
