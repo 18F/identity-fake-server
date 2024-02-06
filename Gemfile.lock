@@ -1,57 +1,9 @@
-GIT
-  remote: https://github.com/18F/identity-aamva-api-client-gem.git
-  revision: c7141277eabf96b011771e6ce5a1169b874cc905
-  tag: v4.1.0
-  specs:
-    aamva (4.1.0)
-      faraday
-      hashie
-      proofer (>= 2.7.1)
-      retries
-      xmldsig
-
-GIT
-  remote: https://github.com/18F/identity-doc-auth.git
-  revision: 3b2c5997a62d7bf5f6114a55d41180f4bd1ae18e
-  tag: v0.4.1
-  specs:
-    identity-doc-auth (0.4.1)
-      activesupport
-      faraday
-
-GIT
-  remote: https://github.com/18F/identity-lexisnexis-api-client-gem.git
-  revision: d6e73358ab899e8740e0008aff0e03e26bd4eb56
-  tag: v3.1.0
-  specs:
-    lexisnexis (3.1.0)
-      activesupport
-      faraday
-
-GIT
-  remote: https://github.com/18F/identity-proofer-gem.git
-  revision: 9c73058b6cafd5299266fb9d554ced04ec63b84a
-  ref: v2.8.0
-  specs:
-    proofer (2.8.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.1.3)
-      base64
-      bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      connection_pool (>= 2.2.5)
-      drb
-      i18n (>= 1.6, < 2)
-      minitest (>= 5.1)
-      mutex_m
-      tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     base64 (0.2.0)
-    bigdecimal (3.1.6)
     byebug (11.1.3)
     capybara (3.40.0)
       addressable
@@ -66,28 +18,13 @@ GEM
       capybara
       selenium-webdriver
     coderay (1.1.3)
-    concurrent-ruby (1.2.3)
-    connection_pool (2.4.1)
     diff-lcs (1.5.1)
-    drb (2.2.0)
-      ruby2_keywords
-    faraday (2.9.0)
-      faraday-net_http (>= 2.0, < 3.2)
-    faraday-net_http (3.1.0)
-      net-http
-    hashie (5.0.0)
-    i18n (1.14.1)
-      concurrent-ruby (~> 1.0)
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.22.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    mutex_m (0.2.0)
-    net-http (0.4.1)
-      uri
     newrelic_rpm (9.7.1)
     nio4r (2.7.0)
     nokogiri (1.16.2)
@@ -112,9 +49,11 @@ GEM
       rack (>= 3.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
     rake (13.0.6)
     regexp_parser (2.9.0)
-    retries (0.0.5)
     rexml (3.2.6)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -143,12 +82,8 @@ GEM
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
     tilt (2.3.0)
-    tzinfo (2.0.6)
-      concurrent-ruby (~> 1.0)
-    uri (0.13.0)
+    webrick (1.8.1)
     websocket (1.2.10)
-    xmldsig (0.7.0)
-      nokogiri (>= 1.6.8, < 2.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -156,19 +91,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aamva!
   capybara
   capybara-selenium
-  identity-doc-auth!
-  lexisnexis!
   newrelic_rpm
   nokogiri (~> 1.16)
   prometheus-client
-  proofer!
   pry-byebug
   puma
   rack (~> 3.0.0)
   rack-test (>= 2.0.0)
+  rackup
   rake (~> 13.0.0)
   rspec
   sinatra (~> 4.0.0)
