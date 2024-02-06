@@ -1,32 +1,36 @@
 GIT
   remote: https://github.com/18F/identity-aamva-api-client-gem.git
-  revision: c7141277eabf96b011771e6ce5a1169b874cc905
-  tag: v4.1.0
+  revision: da308c1568d7f8f3d8aa41d0e2c0b42ad47dfccd
+  tag: v4.2.0
   specs:
-    aamva (4.1.0)
+    aamva (4.2.0)
       faraday
       hashie
       proofer (>= 2.7.1)
+      redacted_struct (>= 1.0.0)
       retries
       xmldsig
 
 GIT
   remote: https://github.com/18F/identity-doc-auth.git
-  revision: 3b2c5997a62d7bf5f6114a55d41180f4bd1ae18e
-  tag: v0.4.1
+  revision: adfb1f33e72af1db4987da3dccfe26e5b1bacf1f
+  tag: v0.13.0
   specs:
-    identity-doc-auth (0.4.1)
+    identity-doc-auth (0.13.0)
       activesupport
       faraday
+      redacted_struct (>= 1.0.0)
 
 GIT
   remote: https://github.com/18F/identity-lexisnexis-api-client-gem.git
-  revision: d6e73358ab899e8740e0008aff0e03e26bd4eb56
-  tag: v3.1.0
+  revision: 79eb47856a297f5ecd5d9b3f1abcb1f01e6f563b
+  tag: v3.2.1
   specs:
-    lexisnexis (3.1.0)
+    lexisnexis (3.2.1)
       activesupport
       faraday
+      proofer
+      redacted_struct (>= 1.0.0)
 
 GIT
   remote: https://github.com/18F/identity-proofer-gem.git
@@ -112,7 +116,11 @@ GEM
       rack (>= 3.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
     rake (13.0.6)
+    redacted_struct (2.0.0)
     regexp_parser (2.9.0)
     retries (0.0.5)
     rexml (3.2.6)
@@ -146,6 +154,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (0.13.0)
+    webrick (1.8.1)
     websocket (1.2.10)
     xmldsig (0.7.0)
       nokogiri (>= 1.6.8, < 2.0.0)
@@ -169,6 +178,7 @@ DEPENDENCIES
   puma
   rack (~> 3.0.0)
   rack-test (>= 2.0.0)
+  rackup
   rake (~> 13.0.0)
   rspec
   sinatra (~> 4.0.0)

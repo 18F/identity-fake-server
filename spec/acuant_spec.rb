@@ -1,3 +1,4 @@
+require 'active_support'
 require 'spec_helper'
 require 'proofer'
 require 'identity-doc-auth'
