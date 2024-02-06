@@ -23,7 +23,7 @@ jobs:
   build:
     docker:
       # Specify the Ruby version you desire here
-      - image: cimg/ruby:2.7.2
+      - image: cimg/ruby:3.3.0
 
     steps:
       - checkout
@@ -35,7 +35,7 @@ jobs:
 
   deploy:
     docker:
-      - image: cimg/ruby:2.7.2
+      - image: cimg/ruby:3.3.0
     working_directory: ~/identity-fake-server
     parameters:
       space:
