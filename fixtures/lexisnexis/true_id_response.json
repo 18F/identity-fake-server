@@ -447,22 +447,22 @@
       {
         "Group": "PORTRAIT_MATCH_RESULT",
         "Name": "FaceMatchResult",
-        "Values": [{"Value": "Fail"}]
+        "Values": [{"Value": "Pass"}]
       },
       {
         "Group": "PORTRAIT_MATCH_RESULT",
         "Name": "FaceMatchScore",
-        "Values": [{"Value": "0"}]
+        "Values": [{"Value": "96"}]
       },
       {
         "Group": "PORTRAIT_MATCH_RESULT",
         "Name": "FaceStatusCode",
-        "Values": [{"Value": "0"}]
+        "Values": [{"Value": "1"}]
       },
       {
         "Group": "PORTRAIT_MATCH_RESULT",
         "Name": "FaceErrorMessage",
-        "Values": [{"Value": "Liveness: PoorQuality"}]
+        "Values": [{"Value": "Successful. Liveness: Live"}]
       }
     ]
   }]
