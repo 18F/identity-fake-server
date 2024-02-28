@@ -13,7 +13,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
 
-RUN gem install bundler:2.5.5
+RUN gem install bundler:2.5.6
 RUN bundle install
 
 EXPOSE 5555
