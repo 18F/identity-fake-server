@@ -10,7 +10,7 @@ default:
 
 .bundle_install: &bundle_install
   - gem install bundler
-  - bundle check || bundle install --retry=3
+  - bundle install --retry=3
 
 .build_cache:
   - &ruby_cache
