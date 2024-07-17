@@ -1,47 +1,59 @@
+# Jobs defined here use the idp/ci docker image from ECR by default. 
 # Images are built via the identity-devops GitLab pipeline.
+
 variables:
-  GITLAB_CI: 'true'
+  BUNDLER_VERSION: "2.3.13"
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
-  IDP_CI_SHA: 'sha256:756a1d450b422720dee36cb9a6217687bcad1e40b780219d360989861ce94212'
-  JUNIT_OUTPUT: 'true'
+  IDP_WORKER_IMAGE_TAG: 'main'
+  IDP_IMAGE_TAG: 'main'
+  PKI_IMAGE_TAG: 'main'
 
 default:
-  image: '${ECR_REGISTRY}/idp/ci@${IDP_CI_SHA}'
+  image: '${ECR_REGISTRY}/dashboard/ci:latest'
+
+before_script:
+  - gem install bundler --version $BUNDLER_VERSION
 
 .bundle_install: &bundle_install
-  - gem install bundler
-  - bundle install --retry=3
+  - bundle check || bundle install --retry=3  --path vendor/bundle
 
+ 
 .build_cache:
   - &ruby_cache
     key:
       files:
         - Gemfile.lock
     paths:
-      - vendor/ruby
+      - vendor/bundle
     policy: pull
+ 
 
 stages:
-  - build
+  - .pre
   - test
   - deploy
 
-install:
-  stage: build
+
+install_dependencies:
+  stage: .pre
   variables:
-    RAILS_ENV: test
   cache:
     - <<: *ruby_cache
       policy: pull-push
 
   script:
     - *bundle_install
+ #   - bundle exec rake login:deploy_json
 
-
-test_app:
+test_release:
   stage: test
+  needs:
+    - job: install_dependencies
   cache:
     - <<: *ruby_cache
   script:
-    - bundle exec rspec spec
- 
+    - *bundle_install
+    - make test
+  artifacts:
+    paths:
+      - /tmp/test-results
