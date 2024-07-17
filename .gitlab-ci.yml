@@ -1,0 +1,47 @@
+# Images are built via the identity-devops GitLab pipeline.
+variables:
+  GITLAB_CI: 'true'
+  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+  IDP_CI_SHA: 'sha256:756a1d450b422720dee36cb9a6217687bcad1e40b780219d360989861ce94212'
+  JUNIT_OUTPUT: 'true'
+
+default:
+  image: '${ECR_REGISTRY}/idp/ci@${IDP_CI_SHA}'
+
+.bundle_install: &bundle_install
+  - gem install bundler
+  - bundle check || bundle install --retry=3
+
+.build_cache:
+  - &ruby_cache
+    key:
+      files:
+        - Gemfile.lock
+    paths:
+      - vendor/ruby
+    policy: pull
+
+stages:
+  - build
+  - test
+  - deploy
+
+install:
+  stage: build
+  variables:
+    RAILS_ENV: test
+  cache:
+    - <<: *ruby_cache
+      policy: pull-push
+
+  script:
+    - *bundle_install
+
+
+test_app:
+  stage: test
+  cache:
+    - <<: *ruby_cache
+  script:
+    - bundle exec rspec spec
+ 
