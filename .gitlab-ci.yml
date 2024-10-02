@@ -5,14 +5,13 @@ variables:
   BUNDLER_VERSION: "2.3.13"
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
   CI_SHA: 'sha256:32de10e332d04c3ce77e9352c50dafe8f02db91d3f9bd3072a76c4117b1ea8c4'
+
 default:
   image: '${ECR_REGISTRY}/identity_fakeserver/ci@${CI_SHA}'
-
 
 .bundle_install: &bundle_install
   - gem install bundler --version $BUNDLER_VERSION
   - bundle check || bundle install --retry=3  --path vendor/bundle
-
  
 .build_cache:
   - &ruby_cache
@@ -23,12 +22,10 @@ default:
       - vendor/bundle
     policy: pull
  
-
 stages:
   - .pre
   - test
   - deploy
-
 
 install_dependencies:
   stage: .pre
@@ -48,7 +45,6 @@ test_release:
   script:
     - *bundle_install
     - make test
-
 
 build-ci-image:
   stage: .pre
@@ -83,7 +79,6 @@ build-ci-image:
       --destination "${ECR_REGISTRY}/identity_fakeserver/ci:${CI_COMMIT_SHA}"
       --build-arg "http_proxy=${http_proxy}" --build-arg "https_proxy=${https_proxy}" --build-arg "no_proxy=${no_proxy}"
  
-
 deploy_to_cloudgov:
   only:
   - main
