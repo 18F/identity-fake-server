@@ -4,17 +4,14 @@
 variables:
   BUNDLER_VERSION: "2.3.13"
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
-
+  CI_SHA: 'sha256:32de10e332d04c3ce77e9352c50dafe8f02db91d3f9bd3072a76c4117b1ea8c4'
 
 default:
-  image: '${ECR_REGISTRY}/dashboard/ci:latest'
-
-before_script:
-  - gem install bundler --version $BUNDLER_VERSION
+  image: '${ECR_REGISTRY}/identity_fakeserver/ci@${CI_SHA}'
 
 .bundle_install: &bundle_install
+  - gem install bundler --version $BUNDLER_VERSION
   - bundle check || bundle install --retry=3  --path vendor/bundle
-
  
 .build_cache:
   - &ruby_cache
@@ -25,12 +22,10 @@ before_script:
       - vendor/bundle
     policy: pull
  
-
 stages:
   - .pre
   - test
   - deploy
-
 
 install_dependencies:
   stage: .pre
@@ -38,10 +33,8 @@ install_dependencies:
   cache:
     - <<: *ruby_cache
       policy: pull-push
-
   script:
     - *bundle_install
- #   - bundle exec rake login:deploy_json
 
 test_release:
   stage: test
@@ -53,21 +46,47 @@ test_release:
     - *bundle_install
     - make test
 
-
+build-ci-image:
+  stage: .pre
+  interruptible: true
+  needs: []
+  tags:
+    - build-pool
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: ['']
+  rules:
+    # Build when there are changes to the Dockerfile
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "web"'
+      changes:
+        compare_to: 'refs/heads/main'
+        paths:
+          - dockerfiles/ci.Dockerfile
+  script:
+    - mkdir -p /kaniko/.docker
+    - |-
+      KANIKOCFG="\"credsStore\":\"ecr-login\""
+      if [ "x${http_proxy}" != "x" -o "x${https_proxy}" != "x" ]; then
+        KANIKOCFG="${KANIKOCFG}, \"proxies\": { \"default\": { \"httpProxy\": \"${http_proxy}\", \"httpsProxy\": \"${https_proxy}\", \"noProxy\": \"${no_proxy}\"}}"
+      fi
+      KANIKOCFG="{ ${KANIKOCFG} }"
+      echo "${KANIKOCFG}" > /kaniko/.docker/config.json
+    - >-
+      /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/dockerfiles/ci.Dockerfile"
+      --destination "${ECR_REGISTRY}/identity_fakeserver/ci:latest"
+      --destination "${ECR_REGISTRY}/identity_fakeserver/ci:${CI_COMMIT_SHA}"
+      --build-arg "http_proxy=${http_proxy}" --build-arg "https_proxy=${https_proxy}" --build-arg "no_proxy=${no_proxy}"
+ 
 deploy_to_cloudgov:
   only:
   - main
   stage: deploy
-  image: '${ECR_REGISTRY}/dashboard/ci:latest'
   script:
-    - curl  -v -L -o cf8-cli_linux_x86-64.tgz "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" 
-    - tar -xvzf cf8-cli_linux_x86-64.tgz
-    - mv cf8 /usr/local/bin
-    - cf8 --version
-    - curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
     - *bundle_install
     - bundle exec rake login:deploy_json
-    -  bundle config set cache_all true
+    - bundle config set cache_all true
     - bundle package
     - cf8 login -a https://api.fr.cloud.gov -u "e1fdd211-f191-40e8-99c7-4e7164d9ae76" -p $CF8_PASS -o "gsa-login-prototyping" -s "$SPACE"
     - cf8 push identity-fake-server -b ruby_buildpack -s cflinuxfs4
