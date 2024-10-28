@@ -54,7 +54,7 @@ GEM
       webrick (~> 1.8)
     rake (13.0.6)
     regexp_parser (2.9.0)
-    rexml (3.2.6)
+    rexml (3.3.9)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
