@@ -12,7 +12,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-selenium'
   gem 'pry-byebug'
-  gem 'rackup'
+  gem 'rackup', '>= 2.2.0'
   gem 'rack-test', '>= 2.0.0'
   gem 'rspec'
 end
