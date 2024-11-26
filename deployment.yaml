@@ -110,14 +110,14 @@ spec:
     kind: Deployment
     name: fake-server
   minReplicas: 1
-  maxReplicas: 8
+  maxReplicas: 100
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 1
+          averageUtilization: 80
   # - type: Pods
   #   pods:
   #     metric:
