@@ -75,7 +75,6 @@ spec:
               cpu: "75m"
               memory: "256Mi"
             limits:
-              cpu: "80m"
               memory: "512Mi"
           ports:
             - containerPort: 5555
@@ -117,7 +116,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 80
+          averageUtilization: 50
   # - type: Pods
   #   pods:
   #     metric:
