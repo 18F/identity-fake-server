@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', '~> 4.0.0'
+gem 'sinatra', '~> 4.1.0'
 gem 'prometheus-client'
 gem 'puma'
 gem 'newrelic_rpm'
