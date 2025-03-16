@@ -5,7 +5,7 @@ gem 'prometheus-client'
 gem 'puma'
 gem 'newrelic_rpm'
 gem 'nokogiri', '~> 1.16'
-gem 'rack', '~> 3.0.9'
+gem 'rack', '~> 3.0.14'
 gem 'rake', '~> 13.0.0'
 
 group :test do
