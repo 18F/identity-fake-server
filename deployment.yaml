@@ -1,9 +1,9 @@
 #
 # This will create a deployment of the fake-server app
-# that will live on https://fake-server.loadtest.identitysandbox.gov.
+# that will live on https://fake-server.agnesloadtest.identitysandbox.gov.
 # The loadtest.identitysandbox.gov dns zone needs to be created
 # and delegated from identitysandbox.gov in the account this is going
-# to be created in, and an SSL cert for fake-server.loadtest.identitysandbox.gov
+# to be created in, and an SSL cert for fake-server.agnesloadtest.identitysandbox.gov
 # needs to be created and have it's magic auth stuff put in the loadtest
 # subdomain.  I did this by hand, but the rest happens automagically,
 # as the fake-server hostname will be created by the external-dns
@@ -65,7 +65,7 @@ spec:
                   key: newrelic-license
                   optional: false
             - name: NEW_RELIC_APP_NAME
-              value: fake-server.loadtest.identitysandbox.gov
+              value: fake-server.agnesloadtest.identitysandbox.gov
             - name: NEW_RELIC_HOST
               value: gov-collector.newrelic.com
             - name: RACK_TIMEOUT_SERVICE_TIMEOUT
@@ -135,12 +135,12 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/healthcheck-path: /health
-    external-dns.alpha.kubernetes.io/hostname: fake-server.loadtest.identitysandbox.gov
+    external-dns.alpha.kubernetes.io/hostname: fake-server.agnesloadtest.identitysandbox.gov
 spec:
   ingressClassName: alb
   tls:
     - hosts:
-        - fake-server.loadtest.identitysandbox.gov
+        - fake-server.agnesloadtest.identitysandbox.gov
   rules:
     - http:
         paths:
