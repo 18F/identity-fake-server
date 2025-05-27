@@ -4,7 +4,7 @@ gem 'sinatra', '~> 4.0.0'
 gem 'prometheus-client'
 gem 'puma'
 gem 'newrelic_rpm'
-gem 'nokogiri', '~> 1.16'
+gem 'nokogiri', '~> 1.18', '>= 1.18.8'
 gem 'rack', '~> 3.0.9'
 gem 'rake', '~> 13.0.0'
 
