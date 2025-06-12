@@ -11,4 +11,4 @@ run:
 	foreman start
 
 test:
-	bundle exec rspec spec/
+	bundle exec rspec spec
