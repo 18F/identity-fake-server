@@ -127,6 +127,12 @@ module LoginGov
       fixture 'usps/ippaas_optinippapplicant_response.json'
     end
 
+    # USPS IPPaaS Search for IPP facilities
+    post '/ivs-ippaas-api/IPPRest/resources/rest/getIppFacilityList' do
+      content_type 'application/json'
+      fixture 'usps/ippaas_getIppFacilityList_response.json'
+    end
+
     # health
     get '/health' do
       begin
